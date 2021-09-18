@@ -14,7 +14,7 @@ public class FastFourierTransformation {
         ArrayList<Float> arrayList = new ArrayList<>();
         int index = 0;
         for (Float i = start; i <= end; i+=samplingFREQ){
-            arrayList.add(func.apply(new Float[]{(float)index, variable[0], (end-samplingFREQ)/samplingFREQ}));
+            arrayList.add(func.apply(new Float[]{(float)index, variable[0], (end-start)/samplingFREQ}));
             index++;
         }
         return arrayList.toArray(new Float[0]);
