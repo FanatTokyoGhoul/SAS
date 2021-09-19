@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class FastFourierTransformation {
 
-    Function<Float, Float> func;
 
-    public FastFourierTransformation(Function<Float, Float> func) {
-        this.func = func;
+
+    public FastFourierTransformation() {
+
     }
 
-    public Float[] createSomeFunc(Float start, Float end, Float samplingFREQ, Float[] variable){
+    public Float[] createSomeFunc(Float start, Float end, Float samplingFREQ, Function<Float, Float> func, Float[] variable){
         ArrayList<Float> arrayList = new ArrayList<>();
         int index = 0;
         for (Float i = start; i <= end; i+=samplingFREQ){
@@ -43,8 +43,8 @@ public class FastFourierTransformation {
         return result;
     }
 
-    public Float[] spectralAnalysis(Float start, Float end, Float samplingFREQ, Float[] variable){
-        Float[] result = createSomeFunc(start, end, samplingFREQ, variable);
+    public Float[] spectralAnalysis(Float start, Float end, Float samplingFREQ, Function<Float, Float> func, Float[] variable){
+        Float[] result = createSomeFunc(start, end, samplingFREQ, func, variable);
         result = dft(result);
         Float[] amplitude = new Float[result.length/2];
         for (int i = 0; i < result.length / 2; i++) {
